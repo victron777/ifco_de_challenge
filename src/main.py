@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
-from src.config import *
-from src.data_loader import *
+from src.config import ORDERS_FILE, INVOICING_FILE, OUTPUT_FOLDER
+from src.data_loader import load_data
 
 def main():
     print("Hello, World!. Now with Spark running")

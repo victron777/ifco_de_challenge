@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
 ENV PYSPARK_PYTHON=python3
 ENV PYSPARK_DRIVER_PYTHON=python3
 
+# Set PYTHONPATH to include the project root directory
+ENV PYTHONPATH=/app
+
 # Copy the requirements file into the container
 COPY requirements.txt .
 

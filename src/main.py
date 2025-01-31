@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-import src.config as config
+from src.config import *
 from src.data_loader import *
 
 def main():
@@ -23,7 +23,7 @@ def main():
     ### TEMPORAL CODE ###
 
     # Load data
-    orders_df, invoicing_df = load_data(spark, config.ORDERS_FILE, config.INVOICING_FILE)
+    orders_df, invoicing_df = load_data(spark, ORDERS_FILE, INVOICING_FILE)
 
 
     # Stop the Spark session

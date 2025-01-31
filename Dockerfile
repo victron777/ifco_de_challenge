@@ -10,6 +10,10 @@ RUN apt-get update && apt-get install -y \
     ln -s /usr/bin/python3 /usr/bin/python && \
     rm -rf /var/lib/apt/lists/*
 
+# Set Python environment variables for PySpark
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
+
 # Copy the requirements file into the container
 COPY requirements.txt .
 

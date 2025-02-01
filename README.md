@@ -52,7 +52,7 @@ Once the Docker container is running:
 
 * Visualizations will be generated in Streamlit dashboard.
 
-To view the output:
+To view the dashboard:
 
 1. Open your browser.
 

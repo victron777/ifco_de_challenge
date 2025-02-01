@@ -1,5 +1,8 @@
 from src.data_loader import *
-from pyspark.sql.functions import from_json, col, explode, regexp_replace, concat, when, lit, split, expr, sum as F_sum, round
+from pyspark.sql.functions import (
+    from_json, col, explode, regexp_replace, concat, when,
+    lit, split, expr, sum as F_sum, round, date_sub, count,
+    year, month, row_number)
 from pyspark.sql.window import Window
 from pyspark.sql import functions as F
 
@@ -125,3 +128,19 @@ def calculate_companies_with_sales_owners(orders_df):
     logger.debug(f"companies with sales owners DF:\n{df_3.show(truncate=False)}")
 
     return df_3
+
+def calculate_sales_owner_training(orders_df):
+    # 2. Identify sales owners who need training to improve selling plastic crates (last 12 months)
+    # Filter orders for the last 12 months
+    last_12_months = orders_df.filter(col("date") >= date_sub(col("date"), 365))
+
+    # Filter for plastic crates
+    plastic_orders = last_12_months.filter(col("crate_type") == "Plastic")
+
+    # Explode the salesowners column to separate each owner
+    plastic_orders = plastic_orders.withColumn("salesowner", explode(split(col("salesowners"), ", ")))
+
+    # Group by salesowner and count orders
+    salesowner_performance = plastic_orders.groupBy("salesowner").agg(count("*").alias("plastic_order_count"))
+
+    return salesowner_performance

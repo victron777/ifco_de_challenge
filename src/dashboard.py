@@ -6,6 +6,7 @@ from src.analysis import (
     calculate_orders_contact_address,
     calculate_sales_commissions,
     calculate_companies_with_sales_owners,
+    calculate_sales_owner_training,
     load_data
 )
 import matplotlib.pyplot as plt
@@ -34,7 +35,7 @@ def main():
     st.sidebar.header("Options")
     analysis_option = st.sidebar.selectbox(
         "Choose Analysis",
-        ["Crate Distribution", "Orders with Contact", "Orders with Contact Address", "Sales Commissions", "Companies with Sales Owners"]
+        ["Crate Distribution", "Orders with Contact", "Orders with Contact Address", "Sales Commissions", "Companies with Sales Owners", "Sales owners who need training"]
     )
 
     # Display analysis based on user selection
@@ -72,6 +73,11 @@ def main():
         st.header("Companies with Sales Owners")
         companies_sales_owners_df = calculate_companies_with_sales_owners(orders_df)
         st.write(companies_sales_owners_df.toPandas())
+
+    elif analysis_option == "Sales owners who need training":
+        st.header("Sales owners who need training")
+        sales_owner_training_df = calculate_sales_owner_training(orders_df)
+        st.write(sales_owner_training_df.toPandas())
 
 if __name__ == "__main__":
     main()

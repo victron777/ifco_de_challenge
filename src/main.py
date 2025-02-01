@@ -29,6 +29,9 @@ def main():
     # Calculate Companies with Sales Owners
     companies_with_sales_owners_df = calculate_companies_with_sales_owners(orders_df)
 
+    # Calculate Companies with Sales Owners
+    sales_owner_training_df = calculate_sales_owner_training(orders_df)
+
     # # Save the results to a CSV file
     # distribution_df.write.csv(config.OUTPUT_FOLDER, header=True, mode="overwrite")
 

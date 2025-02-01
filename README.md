@@ -65,12 +65,17 @@ ifco_de_challenge/
 ├── src/                    # Source code
 │   ├── main.py             # Main script for analysis
 │   ├── analysis.py         # Functions for data analysis
-│   └── visualization.py    # Functions for data visualization
+│   ├── dashboard.py        # Functions for data visualization
+│   ├── config.py           # Constant functions to define the base path and folders
+│   ├── data_loader.py      # Functions to load input data from source
+└── └── utils.py            # Utilities used in the main app
 ├── output/                 # Generated output files (e.g., plots, reports)
 ├── Dockerfile              # Docker configuration
 ├── docker-compose.yml      # Docker Compose configuration
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation
+└── tests/                  # unit test code
+    └── test_analysis.pyy    
 ```
 
 ## Thoughtful Assumptions and Explanations

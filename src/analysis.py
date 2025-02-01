@@ -105,7 +105,7 @@ def calculate_sales_commissions(orders_df, invoices_df):
 
 def calculate_companies_with_sales_owners(orders_df):
 
-    # Step 1: Normalize company names to handle duplicates (Optional)
+    # Step 1: Normalize company names to handle duplicates
     company_window = Window.partitionBy("company_name").orderBy("company_id")
     df = orders_df.withColumn("rank", F.row_number().over(company_window)) \
         .withColumn("normalized_company_id", F.first("company_id").over(company_window))

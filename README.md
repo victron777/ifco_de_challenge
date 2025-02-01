@@ -4,12 +4,10 @@ This project is part of the IFCO Data Engineering Challenge. It includes data an
 
 ## Table of Contents
 * Prerequisites
-
 * Setup Instructions
-
 * Running the Project
-
 * Project Structure
+* Thoughtful Assumptions and Explanations
 
 
 ## Prerequisites
@@ -75,3 +73,57 @@ ifco_de_challenge/
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation
 ```
+
+## Thoughtful Assumptions and Explanations
+
+This section outlines the key assumptions and reasoning behind the modeling approach used in this project.
+
+---
+
+### 1. **Data Quality and Completeness**
+- **Assumption**: The provided datasets (`orders.csv` and `invoices.json`) are complete and accurate.
+- **Explanation**:
+    - Missing values in the `contact_data` column were handled by treating them as `NULL`.
+    - Duplicate entries in the `invoices.json` dataset (e.g., two invoices for the same `order_id`) were assumed to be valid and retained for analysis.
+
+### 2. **Crate Type Analysis**
+- **Assumption**: The `crate_type` column in `orders.csv` is consistent and correctly categorized into `Plastic`, `Wood`, and `Metal`.
+- **Explanation**:
+    - The distribution of orders by crate type was analyzed to understand the popularity of each type.
+    - Focus was placed on `Plastic` crates as per the stakeholder's request.
+
+### 3. **Sales Owner Performance**
+- **Assumption**: The `salesowners` column in `orders.csv` contains a comma-separated list of sales owners for each order.
+- **Explanation**:
+    - The column was split into individual sales owners using `explode` to analyze performance.
+    - Sales owners with fewer plastic crate orders in the last 12 months were identified as needing additional training.
+
+### 4. **Visualization Approach**
+- **Assumption**: Visualizations should be simple and intuitive for stakeholders to interpret.
+- **Explanation**:
+    - Bar charts were used to show the distribution of orders by crate type and sales owner performance.
+    - Line charts were used to display the top 5 performers over time, as they effectively show trends.
+
+### 5. **Handling Duplicate Invoices**
+- **Assumption**: Duplicate invoices for the same `order_id` in `invoices.json` are valid and represent multiple transactions.
+- **Explanation**:
+    - Duplicates were retained to ensure all transactions were included in the analysis.
+    - Aggregation functions (e.g., `sum`) were used to handle duplicate values where necessary.
+
+### 6. **Time-Based Filtering**
+- **Assumption**: The last 12 months of data are sufficient to identify trends and training needs.
+- **Explanation**:
+    - A 12-month window was chosen to balance recency and data volume.
+    - Older data was excluded to focus on recent performance.
+
+### 7. **Docker Environment**
+- **Assumption**: The project will be run in a Docker container to ensure consistency across environments.
+- **Explanation**:
+    - Docker was used to encapsulate dependencies and avoid conflicts with local environments.
+    - The `Dockerfile` and `docker-compose.yml` files were configured to simplify setup and execution.
+
+### 8. **Output Directory**
+- **Assumption**: Generated visualizations and reports should be saved in an `output/` directory.
+- **Explanation**:
+    - The `output/` directory was created to organize and store all generated files.
+    - This ensures that results are easily accessible and reproducible.

@@ -1,4 +1,4 @@
-# IFCO DE Challenge
+# IFCO Data Engineering Challenge
 
 This project is part of the IFCO Data Engineering Challenge. It includes data analysis and visualization tasks using PySpark, containerized with Docker for easy setup and execution.
 
@@ -60,7 +60,6 @@ To view the dashboard:
 The project is organized as follows:
 
 ```
-Copy
 ifco_de_challenge/
 ├── data/                   # Dataset files (e.g., orders.csv, invoices.json)
 ├── src/                    # Source code

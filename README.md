@@ -121,9 +121,3 @@ This section outlines the key assumptions and reasoning behind the modeling appr
 - **Explanation**:
     - Docker was used to encapsulate dependencies and avoid conflicts with local environments.
     - The `Dockerfile` and `docker-compose.yml` files were configured to simplify setup and execution.
-
-### 8. **Output Directory**
-- **Assumption**: Generated visualizations and reports should be saved in an `output/` directory.
-- **Explanation**:
-    - The `output/` directory was created to organize and store all generated files.
-    - This ensures that results are easily accessible and reproducible.

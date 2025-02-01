@@ -25,7 +25,8 @@ Clone the repository to your local machine:
 
 ```
 bash
-Copy git clone https://github.com/victron777/ifco_de_challenge.git
+
+git clone https://github.com/victron777/ifco_de_challenge.git
 cd ifco_de_challenge
 ```
 
@@ -34,7 +35,7 @@ Use Docker Compose to build and start the project:
 
 ```
 bash
-Copy
+
 docker-compose build
 docker-compose up
 ```
@@ -49,13 +50,13 @@ Once the Docker container is running:
 
 * The analysis script will execute automatically.
 
-* Visualizations will be generated and saved in the output/ directory (if applicable).
+* Visualizations will be generated in Streamlit dashboard.
 
 To view the output:
 
-1. Check the output/ directory for generated files (e.g., plots, reports).
+1. Open your browser.
 
-2. Logs from the analysis script will be displayed in the terminal.
+2. Go to this URL: http://0.0.0.0:8501
 
 ## Project Structure
 The project is organized as follows:

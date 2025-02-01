@@ -1,27 +1,15 @@
 from pyspark.sql import SparkSession
 from src.config import ORDERS_FILE, INVOICING_FILE, OUTPUT_FOLDER
-from src.data_loader import load_data
 from src.analysis import *
 
 def main():
-    print("Hello, World!. Now with Spark running")
+    logger.info("Starting the main app")
 
     # Initialize Spark session
     spark = SparkSession.builder \
         .master("local[*]") \
         .appName("IFCO Assessment") \
         .getOrCreate()
-
-    ### TEMPORAL CODE ### TODO: REMOVE IT
-    # Create a DataFrame
-    data = [("Alice", 34), ("Bob", 45)]
-    columns = ["Name", "Age"]
-    df = spark.createDataFrame(data, columns)
-
-    # Show the DataFrame
-    print("DataFrame Contents:")
-    df.show()
-    ### TEMPORAL CODE ###
 
     # Load data
     orders_df, invoicing_df = load_data(spark, ORDERS_FILE, INVOICING_FILE)

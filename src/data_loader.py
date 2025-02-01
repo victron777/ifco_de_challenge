@@ -18,9 +18,6 @@ def load_data(spark, orders_path, invoicing_path):
     logger.info(f"Count of processed orders_df:: {orders_df.count()}")
     logger.debug(f"processed orders_df DF:\n{orders_df.show(truncate=False)}")
 
-    # Load invoicing_data.json
-    # invoicing_path = "data/invoicing_data.json"
-
     invoicing_input = spark.read.option("multiline", "true").json(invoicing_path) #spark.read.json(invoicing_path)
     invoicing_df = invoicing_input.selectExpr("explode(data.invoices) as invoice").select("invoice.*")
 

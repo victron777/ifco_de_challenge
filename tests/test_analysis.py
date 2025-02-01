@@ -1,6 +1,5 @@
 import unittest
 from src.analysis import  *
-import os
 from pyspark.sql import SparkSession
 
 class TestMain(unittest.TestCase):

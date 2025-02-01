@@ -1,9 +1,7 @@
-import logging
 from src.data_loader import *
 from pyspark.sql.functions import from_json, col, explode, regexp_replace, concat, when, lit, split, expr, sum as F_sum, round
 from pyspark.sql.window import Window
 from pyspark.sql import functions as F
-from src.utils import contact_schema
 
 # Create a logger
 logger = logging.getLogger(__name__)

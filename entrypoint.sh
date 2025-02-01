@@ -19,3 +19,7 @@ python -m unittest discover -s tests -v
 # Run the main application
 echo "Running the main application..."
 python src/main.py
+
+## Run the Streamlit dashboard
+echo "Starting the Streamlit dashboard..."
+exec streamlit run src/dashboard.py --server.port=8501 --server.address=0.0.0.0
